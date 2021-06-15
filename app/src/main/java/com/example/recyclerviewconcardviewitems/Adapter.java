@@ -55,7 +55,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
           //  revistaIsseu = itemView.findViewById(R.id.txtIsseu);
          //   revistaVolumen = itemView.findViewById(R.id.txtVolumen);
           //  revistaNumero = itemView.findViewById(R.id.txtNumero);
-         //   revistaAnio = itemView.findViewById(R.id.txtAnio);
+            revistaAnio = itemView.findViewById(R.id.txtAnio);
             //revistaFecha = itemView.findViewById(R.id.txtFecha);
             revistaTitulo = itemView.findViewById(R.id.txtTitulo);
             revistaDoi = itemView.findViewById(R.id.txtDoi);
@@ -67,7 +67,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
            // revistaVolumen.setText(revist.getVolumen());
           //  revistaNumero.setText(revist.getNumero());
             //revistaFecha.setText(revist.getFecha());
-           // revistaAnio.setText(revist.getAnio());
+           revistaAnio.setText(revist.getAnio());
             revistaDoi.setText(revist.getDoi());
 
         }

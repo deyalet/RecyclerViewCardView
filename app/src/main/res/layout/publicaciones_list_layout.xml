@@ -60,7 +60,8 @@
                     andriod:id="@+id/txtDoi"
                     andriod:layout_width="match_parent"
                     andriod:layout_height="wrap_content"
-                    andriod:text="DOI" />
+                    andriod:text="DOI"
+                    andriod:textSize="16sp" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
