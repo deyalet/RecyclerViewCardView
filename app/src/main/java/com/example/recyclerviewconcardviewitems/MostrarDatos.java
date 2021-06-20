@@ -14,6 +14,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.recyclerviewconcardviewitems.Adapter;
+import com.example.recyclerviewconcardviewitems.R;
+import com.example.recyclerviewconcardviewitems.Revistas;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,13 +34,7 @@ public class MostrarDatos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_datos);
-
-
-
-
         extractRevistas();
-
-
     }
 
     private void extractRevistas(){
@@ -51,23 +48,26 @@ public class MostrarDatos extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 revistas = new ArrayList<>();
-                    try {
-                        for (int i = 0; i < response.length(); i++) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
                         JSONObject revistaObject = response.getJSONObject(i);
-                        revistas.add(new Revistas(revistaObject.getString("issue_id"), revistaObject.getString("volume"),
-                                revistaObject.getString("number"), revistaObject.getString("year"),
-                                revistaObject.getString("date_published"), revistaObject.getString("title"),
-                                revistaObject.getString("doi"), revistaObject.getString("cover")));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        String idrevista = revistaObject.getString("issue_id");
+                        String volumenrevista = revistaObject.getString("volume");
+                        String añorevista = revistaObject.getString("year");
+                        String numerorevista = revistaObject.getString("number");
+                        String fechapublicacionrevista = revistaObject.getString("date_published");
+                        String titulorevista = revistaObject.getString("title");
+                        String doirevista = revistaObject.getString("doi");
+                        String coverrevista = revistaObject.getString("cover");
+                        revistas.add(new Revistas(idrevista,volumenrevista,añorevista,numerorevista,fechapublicacionrevista,titulorevista,doirevista,coverrevista));
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 adapter = new Adapter(getApplicationContext(),revistas);
                 recyclerView = findViewById(R.id.RevistaList);
-                recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(adapter);
-
             }
         }, new Response.ErrorListener() {
             @Override
